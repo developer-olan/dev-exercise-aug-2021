@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Dosage } from 'src/app/models/Dosage';
 import * as xml2js from 'xml2js';
+import { BarcodeFormat } from '@zxing/library';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-camera-reader',
@@ -9,48 +11,81 @@ import * as xml2js from 'xml2js';
   styleUrls: ['./camera-reader.component.css']
 })
 export class CameraReaderComponent implements OnInit {
+  // Parser class attributes
   testXMlString: string = "";
   parser = new xml2js.Parser({ trim: true, explicitArray: true });
   plansArray: Array<Dosage> = [];
+  
+  // ZXing scanner class attributes
+  barcodeFormats: Array<BarcodeFormat> = [BarcodeFormat.DATA_MATRIX];
+  availableDevices!: MediaDeviceInfo[];
+  deviceCurrent!: MediaDeviceInfo;
+  deviceSelected!: string;
+
+  formatsEnabled: BarcodeFormat[] = [
+    BarcodeFormat.AZTEC,
+    BarcodeFormat.CODE_128,
+    BarcodeFormat.DATA_MATRIX,
+    BarcodeFormat.EAN_13,
+    BarcodeFormat.QR_CODE,
+  ];
+
+  hasDevices!: boolean;
+  hasPermission!: boolean;
 
   qrResultString?: string;
 
+  torchEnabled = false;
+  torchAvailable$ = new BehaviorSubject<boolean>(false);
+  tryHarder = false;
+
+
+  constructor(private router: Router) {
+    this.initialiazeTestXML();
+    this.extractDosage();
+  }
+
+      
   clearResult(): void {
     this.qrResultString = "";
+  }
+
+  onCamerasFound(devices: MediaDeviceInfo[]): void {
+    this.availableDevices = devices;
+    this.hasDevices = Boolean(devices && devices.length);
   }
 
   onCodeResult(resultString: string) {
     this.qrResultString = resultString;
     alert(this.qrResultString);
+    this.navigatePlanView();
   }
 
-  constructor(private router: Router) {
-    this.initialiazeTestXML();
-    this.extractDosage();
-    //this.navigatePlanView();
+  toggleTorch(): void {
+    this.torchEnabled = !this.torchEnabled;
   }
 
-  ngAfterViewInit() {
+  toggleTryHarder(): void {
+    this.tryHarder = !this.tryHarder;
   }
-
-  onValueChanges(result: any) {
-  }
-
-  onStarted(started: any) {
-  }
-
-
- 
 
   ngOnInit(): void {
   }
   
+  onHasPermission(has: boolean) {
+    this.hasPermission = has;
+  }
+
+  onTorchCompatible(isCompatible: boolean): void {
+    this.torchAvailable$.next(isCompatible || false);
+  }
+
   navigateHome(): void {
     this.router.navigateByUrl('');
   };
 
-  navigatePlanView(): void {
-    this.router.navigateByUrl('plan-view/',  { state: this.plansArray[0] });
+  navigatePlanView = () => {
+    this.router.navigateByUrl('plan-view/',  {state: this.plansArray});
   };
 
   initialiazeTestXML() {

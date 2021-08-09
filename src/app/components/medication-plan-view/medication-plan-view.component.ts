@@ -17,9 +17,10 @@ export class MedicationPlanViewComponent implements OnInit {
   ngOnInit(): void {
     this.activatedroute.data.subscribe(data => {
       this.allDosages = data;
-      alert(JSON.stringify(this.allDosages));
       console.log(this.allDosages);
   })
+
+  this.allDosages = history.state;
   }
 
   onValueChanges(result: any) {

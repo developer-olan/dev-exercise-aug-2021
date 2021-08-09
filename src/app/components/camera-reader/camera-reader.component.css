@@ -4,6 +4,16 @@
       max-width: 200px;
 }
 
+zxing-scanner {
+  max-height: 50vh;    
+  object-fit: contain;
+}
+
+zxing-scanner {
+  border-style: solid;
+  border-color: #5d78ff;
+} 
+
 .results {
 
     position: sticky;
