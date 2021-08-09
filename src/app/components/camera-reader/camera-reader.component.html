@@ -1,0 +1,18 @@
+<div class="moduler-app-content">
+    <!-- <input type="file" accept="image/*" capture> -->
+    <div>
+        <span>Please place the code within camera range</span>
+    </div>
+    <div class="scanner-view">
+        <zxing-scanner (scanSuccess)="onCodeResult($event)"></zxing-scanner>
+        <!-- <barcode-scanner-livestream type="code_128" (valueChanges)="onValueChanges($event)" (started)="(onStarted)"></barcode-scanner-livestream> -->
+    </div>
+
+    <div class="section-actions">
+        <button mat-flat-button color="accent" (click)="navigateHome()">
+          <mat-icon  aria-hidden="false"  aria-label="Example home icon">home</mat-icon>
+          Go Back
+        </button>
+    </div>
+
+</div>

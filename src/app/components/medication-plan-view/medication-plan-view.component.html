@@ -1,0 +1,23 @@
+<div class="moduler-app-content">
+    <section class="results" *ngIf="allDosages">
+
+        <!-- <div *ngFor="let dosage of allDosages">
+        <div>
+            <small>Result</small>
+            <strong></strong>
+        </div>
+        </div> -->
+
+        <div class="section-actions">
+            <button mat-flat-button color="accent" (click)="navigateHome()">
+        <mat-icon  aria-hidden="false"  aria-label="Example home icon">home</mat-icon>
+        Go Back
+    </button>
+           
+            <button mat-flat-button color="accent" (click)="openScanner()">
+        <mat-icon  aria-hidden="false"  aria-label="Example home icon">camera</mat-icon>
+        ReScan
+    </button>
+        </div>
+    </section>
+</div>
