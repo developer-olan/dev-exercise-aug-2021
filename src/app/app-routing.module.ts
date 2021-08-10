@@ -16,6 +16,10 @@ const routes: Routes = [
   {
     path: 'plan-view/',
     component: MedicationPlanViewComponent,
+  },
+  {
+    path: '**',
+    component: StartComponent,
   }
 ];
 

@@ -1,23 +1,76 @@
 <div class="moduler-app-content">
-    <section class="results" *ngIf="allDosages">
-
-        <!-- <div *ngFor="let dosage of allDosages">
-        <div>
-            <small>Result</small>
-            <strong></strong>
+    <section class="" *ngIf="allDosages.length > 0">
+        <i class="bi bi-file-medical display-icon"></i>
+        <div class="ngb-accordion">
+        <ngb-accordion #acc="ngbAccordion">
+            <ngb-panel *ngIf="allMornings.length > 0">
+                <ng-template ngbPanelTitle>
+                    <span>Morning</span>
+                  </ng-template>
+              <ng-template ngbPanelContent>
+                <div *ngFor="let dosage of allMornings">
+                    <div *ngIf="dosage.medicineId">
+                        <p class="medicine-id">{{dosage.medicineId}}</p>
+                        <p class="medicine-purpose">{{dosage.purpose}}</p>
+                        <strong></strong>
+                    </div>
+                </div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel *ngIf="allNoons.length > 0">
+                <ng-template ngbPanelTitle>
+                    <span>&#9733; <b>Afternoon</b> title &#9733;</span>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                <div *ngFor="let dosage of allNoons">
+                    <div *ngIf="dosage.medicineId">
+                        <p class="medicine-id">{{dosage.medicineId}}</p>
+                        <p class="medicine-purpose">{{dosage.purpose}}</p>
+                        <strong></strong>
+                    </div>
+                </div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="Evenings" *ngIf="allEvenings.length > 0">
+                <ng-template ngbPanelContent>
+                    <div *ngFor="let dosage of allEvenings">
+                        <div *ngIf="dosage.medicineId">
+                            <p class="medicine-id">{{dosage.medicineId}}</p>
+                            <p class="medicine-purpose">{{dosage.purpose}}</p>
+                            <strong></strong>
+                        </div>
+                    </div>
+                </ng-template>
+              </ngb-panel>
+              <ngb-panel title="Night" *ngIf="allNights.length > 0">
+                <ng-template ngbPanelContent>
+                    <div *ngFor="let dosage of allNights">
+                        <div *ngIf="dosage.medicineId">
+                            <p class="medicine-id">{{dosage.medicineId}}</p>
+                            <p class="medicine-purpose">{{dosage.purpose}}</p>
+                            <strong></strong>
+                        </div>
+                    </div>
+                </ng-template>
+              </ngb-panel>
+          </ngb-accordion>
         </div>
-        </div> -->
 
-        <div class="section-actions">
-            <button mat-flat-button color="accent" (click)="navigateHome()">
-        <mat-icon  aria-hidden="false"  aria-label="Example home icon">home</mat-icon>
-        Go Back
-    </button>
-           
-            <button mat-flat-button color="accent" (click)="openScanner()">
-        <mat-icon  aria-hidden="false"  aria-label="Example home icon">camera</mat-icon>
-        ReScan
-    </button>
-        </div>
     </section>
+    <div class="section-actions">
+        <button mat-flat-button color="accent" (click)="openScanner()">
+            <mat-icon  aria-hidden="false"  aria-label="Example home icon">camera_alt</mat-icon>
+            Scan another
+        </button>
+        <br>
+        <br>
+        <button mat-flat-button color="accent" (click)="navigateHome()">
+            <mat-icon  aria-hidden="false"  aria-label="Example home icon">home</mat-icon>
+            <mat-icon  aria-hidden="false"  aria-label="Example home icon">arrow_left</mat-icon>
+            Go to Start
+        </button>
+        
+        
+    </div>
+
 </div>

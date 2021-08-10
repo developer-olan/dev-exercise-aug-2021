@@ -4,4 +4,5 @@ export interface Dosage {
     afternoon: string;
     evening: string;
     night: string;
+    purpose: string;
 }

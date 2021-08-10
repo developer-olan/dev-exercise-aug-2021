@@ -8,11 +8,11 @@ import { MedicationPlanViewComponent } from './components/medication-plan-view/m
 import { StartComponent } from './components/start/start.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import { BarcodeScannerLivestreamModule } from "ngx-barcode-scanner";
-
-
+import { MatIconModule } from '@angular/material/icon';
+import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import { StatusUpdateDialogComponent } from './components/status-update-dialog/status-update-dialog.component';
 
 
 @NgModule({
@@ -20,16 +20,18 @@ import { BarcodeScannerLivestreamModule } from "ngx-barcode-scanner";
     AppComponent,
     CameraReaderComponent,
     MedicationPlanViewComponent,
-    StartComponent
+    StartComponent,
+    StatusUpdateDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ZXingScannerModule,
+    MatDialogModule,
     MatButtonModule,
-    MatIconModule, 
-    BarcodeScannerLivestreamModule
+    MatIconModule,
+    NgbAccordionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,43 @@
+section {
+   
+    align-items: center;
+    text-align: center;
+}
+
+.ngb-accordion {
+    margin: 20px 0 5px !important;
+    align-items: left;
+}
+
+ngb-accordion {
+    margin: 10px 0 5px !important;
+    align-items: left;
+}
+
+ngb-panel {
+    margin: 10px 0 5px 0px;
+    color: darkgrey !important;
+    min-width: 250px;
+}
+
+.card-header {
+    margin-top: 0.75em !important;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+  }
+
+.card-header button span {
+    text-decoration: none;
+    color: red;
+}
+
+ngb-accordion .medicine-id {
+    font-size: 15px;
+    align-self: left;
+}
+
+ngb-accordion .medicine-purpose {
+    font-size: 10px;
+    align-self: left;
+}
+
+

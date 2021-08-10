@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -8,11 +8,24 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     align-items: center;
     padding: 0 16px;
     flex-direction: column;
-    margin: 50px auto 22px;
+    margin: 40px auto;
     max-width: 720px;
     text-align: center;
+    border: 0px solid black; /* test style*/
 }
 
 .section-actions {
     margin-top: 40px;
+}
+
+.main-text {
+    color: rgb(59, 59, 59);
+}
+.sub-text {
+    color: rgb(121, 118, 118);
+}
+
+.display-icon {
+    font-size: 75px;
+    margin-bottom: 10px;
 }
